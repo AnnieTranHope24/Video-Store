@@ -11,6 +11,7 @@ namespace ModelTest
         [TestMethod]
         public void TestConstructor()
         {
+            //Given
             Customer customer = new Customer()
             {
                 Name = new Name()
@@ -20,6 +21,7 @@ namespace ModelTest
                 }
             };
 
+            //Then
             Assert.IsNotNull(customer.PreferredStores);
             Assert.AreEqual(0, customer.PreferredStores.Count);
             Assert.IsNotNull(customer.CommunicationTypes);
@@ -32,6 +34,7 @@ namespace ModelTest
 
         [TestMethod]
         public void ShouldEqualsWhenEmailAddrEqual() {
+            //Given
             Customer customer = new Customer()
             {
                 EmailAddress = "annie@gmail.com"
@@ -44,12 +47,14 @@ namespace ModelTest
 
             };
 
-            Assert.AreEqual(true, customer.Equals(comparison));
+            //Then
+            Assert.IsTrue(customer.Equals(comparison));
         }
 
         [TestMethod]
         public void ShouldNotEqualsWhenEmailAddrNotEqual()
         {
+            //Given
             Customer customer = new Customer()
             {
                 EmailAddress = "ngoc@gmail.com"
@@ -62,14 +67,21 @@ namespace ModelTest
 
             };
 
-            Assert.AreEqual(false, customer.Equals(comparison));
+            //Then
+            Assert.IsFalse(customer.Equals(comparison));
         }
 
         [TestMethod]
         public void TestGetHashCode()
         {
-            Customer customer = new Customer();
-            Assert.IsNotNull(customer.GetHashCode());
+            //Given
+            Customer customer = new Customer()
+            {
+                Id = 3
+            };
+
+            //Then
+            Assert.IsTrue(customer.GetHashCode().Equals(3));
         }
 
         [TestMethod]
@@ -81,6 +93,7 @@ namespace ModelTest
         [TestMethod]
         public void TestFullName()
         {
+            //Given
             Customer customer = new Customer()
             {
                 Name = new Name()
@@ -90,6 +103,7 @@ namespace ModelTest
                 }
             };
 
+            //Then
             Assert.AreEqual("Stu Dent", customer.FullName);
         }
     }
