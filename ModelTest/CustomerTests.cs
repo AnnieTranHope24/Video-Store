@@ -253,6 +253,129 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldRemoveThenAddPreferredStore()
+        {
+            //Given
+            Customer customer = new Customer()
+            {
+                Name = new Name()
+                {
+                    First = "Stu",
+                    Last = "Dent"
+                },
+                EmailAddress = "annie@hope.edu"
+            };
+            Store store = new Store()
+            {
+                StreetAddress = "141 E 12th St",
+                ZipCode = new ZipCode()
+                {
+                    Code = "49423"
+                }
+            };
+            Store anotherStore = new Store();
+            customer.PreferredStores.Add(store);
+            customer.PreferredStores.Add(anotherStore);
+
+            //When
+            customer.AddPreferredStore(store);
+
+            //Then
+            Assert.IsTrue(customer.PreferredStores.Contains(store));
+            Assert.AreEqual(customer.PreferredStores[1], store);
+        }
+
+        [TestMethod]
+        public void ShouldInsertPreferredStore()
+        {
+            //Given
+            Customer customer = new Customer()
+            {
+                Name = new Name()
+                {
+                    First = "Stu",
+                    Last = "Dent"
+                },
+                EmailAddress = "annie@hope.edu"
+            };
+            Store store = new Store()
+            {
+                StreetAddress = "141 E 12th St",
+                ZipCode = new ZipCode()
+                {
+                    Code = "49423"
+                }
+            };
+            Store anotherStore = new Store();
+            customer.PreferredStores.Add(anotherStore);
+
+            //When
+            customer.AddPreferredStore(store, 0);
+
+            //Then
+            Assert.IsTrue(customer.PreferredStores.Contains(store));
+            Assert.AreEqual(customer.PreferredStores[0], store);
+        }
+
+        [TestMethod]
+        public void ShouldRemovePreferredStore()
+        {
+            //Given
+            Customer customer = new Customer()
+            {
+                Name = new Name()
+                {
+                    First = "Stu",
+                    Last = "Dent"
+                },
+                EmailAddress = "annie@hope.edu"
+            };
+            Store store = new Store()
+            {
+                StreetAddress = "141 E 12th St",
+                ZipCode = new ZipCode()
+                {
+                    Code = "49423"
+                }
+            };
+            customer.PreferredStores.Add(store);
+
+            //When
+            customer.RemovePreferredStore(store);
+
+            //Then
+            Assert.IsFalse(customer.PreferredStores.Contains(store));
+            Assert.AreEqual(customer.PreferredStores.Count, 0);
+        }
+
+        [TestMethod]
+        public void ShouldThrowExcWhenRemovePreferredStore()
+        {
+            //Given
+            Customer customer = new Customer()
+            {
+                Name = new Name()
+                {
+                    First = "Stu",
+                    Last = "Dent"
+                },
+                EmailAddress = "annie@hope.edu"
+            };
+            Store store = new Store()
+            {
+                StreetAddress = "141 E 12th St",
+                ZipCode = new ZipCode()
+                {
+                    Code = "49423"
+                }
+            };
+
+            //Then
+            var ex = Assert.ThrowsException<ArgumentException>(() => customer.RemovePreferredStore(store));
+            Assert.AreEqual(ex.Message, $"Attempt to remove store {store} from customer {customer.FullName}'s list of preferred stores when it does not exist");
+        }
+
+        [TestMethod]
         public void ShouldNotEqualsWhenCompareWithNull()
         {
             //Given
