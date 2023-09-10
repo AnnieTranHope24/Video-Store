@@ -13,6 +13,31 @@ namespace ModelTest
     public class ReservationTests
     {
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            Reservation reservation = new Reservation()
+            {
+                Movie = new Movie()
+                {
+                    Title = "Inception",
+                    Year = 2010
+                },
+
+                Customer = new Customer()
+                {
+                    EmailAddress = "annie@gmail.com"
+                }
+
+            };
+
+            Reservation comparison = null;
+
+            //Then
+            Assert.IsFalse(reservation.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenMovieCustomerEqual()
         {
             //Given

@@ -24,6 +24,22 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            Movie movie = new Movie()
+            {
+                Title = "Red",
+                Year = 2023
+            };
+
+            Movie comparison = null;
+
+            //Then
+            Assert.IsFalse(movie.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenTitleAndYearEqual()
         {
             //Given

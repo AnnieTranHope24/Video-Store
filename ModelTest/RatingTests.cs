@@ -32,6 +32,22 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            Rating rating = new Rating()
+            {
+                Id = 2
+
+            };
+
+            Rating comparison = null;
+
+            //Then
+            Assert.IsFalse(rating.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldNotEqualsWhenIdNotEqual()
         {
             //Given

@@ -23,6 +23,21 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            CommunicationMethod method = new CommunicationMethod()
+            {
+                Name = "annie"
+
+            };
+            Customer comparison = null;
+
+            //Then
+            Assert.IsFalse(method.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenNameEqual()
         {
             //Given

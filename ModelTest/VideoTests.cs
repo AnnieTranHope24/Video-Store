@@ -22,6 +22,21 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            Video video = new Video()
+            {
+                Id = 1
+
+            };
+
+            Video comparison = null;
+
+            //Then
+            Assert.IsFalse(video.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenIDEqual()
         {
             Video video = new Video()

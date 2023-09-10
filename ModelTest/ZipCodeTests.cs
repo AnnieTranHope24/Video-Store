@@ -23,6 +23,21 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            ZipCode code = new ZipCode()
+            {
+                Code = "49423"
+            };
+
+            ZipCode comparison = null;
+
+            //Then
+            Assert.IsFalse(code.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenCodeEquals()
         {
             //Given

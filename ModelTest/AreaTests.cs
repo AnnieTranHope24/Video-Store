@@ -24,6 +24,21 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            Area area = new Area()
+            {
+                Name = "Foo"
+
+            };
+
+            Area comparison = null;
+
+            //Then
+            Assert.IsFalse(area.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldEqualsWhenNameEqual()
         {
             Area area = new Area()

@@ -32,6 +32,21 @@ namespace ModelTest
         }
 
         [TestMethod]
+        public void ShouldNotEqualsWhenCompareWithNull()
+        {
+            //Given
+            Genre genre = new Genre()
+            {
+                Name = "annie"
+
+            };
+            Genre comparison = null;
+
+            //Then
+            Assert.IsFalse(genre.Equals(comparison));
+        }
+
+        [TestMethod]
         public void ShouldNotEqualsWhenNameNotEquals()
         {
             Genre genre = new Genre()
