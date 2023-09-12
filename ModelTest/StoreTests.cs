@@ -51,7 +51,7 @@ namespace ModelTest
                     First = "Annie",
                     Last = "Tran"
                 },
-                DateOfBirth = DateFactory.TestDate
+                DateOfBirth = new DateTime(1800, 2, 2)
             };
             store.AddManager(newManager);
 

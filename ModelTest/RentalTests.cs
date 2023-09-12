@@ -73,6 +73,7 @@ namespace ModelTest
         public void ShouldReturnReturnReceipt()
         {
             //Given
+            DateFactory.Mode = DateFactoryMode.Test;
             Video video = new Video()
             {
                 Id = 2,
@@ -135,6 +136,7 @@ namespace ModelTest
         public void ShouldEquals()
         {
             //Given
+            DateFactory.Mode = DateFactoryMode.Test;
             Rental rental = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate);
             Rental comparison = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate);
 
@@ -146,6 +148,7 @@ namespace ModelTest
         public void ShouldNotEqualsWhenVideoNotEqual()
         {
             //Given
+            DateFactory.Mode = DateFactoryMode.Test;
             Rental rental = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate);
             Rental comparison = CreateRental(4, "ngoc@gmail.com", DateFactory.CurrentDate);
 
@@ -157,6 +160,7 @@ namespace ModelTest
         public void ShouldNotEqualsWhenCustomerNotEqual()
         {
             //Given
+            DateFactory.Mode = DateFactoryMode.Test;
             Rental rental = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate);
             Rental comparison = CreateRental(3, "annie@gmail.com", DateFactory.CurrentDate);
 
@@ -169,7 +173,7 @@ namespace ModelTest
         {
             //Given
             Rental rental = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate);
-            Rental comparison = CreateRental(3, "ngoc@gmail.com", DateFactory.TestDate);
+            Rental comparison = CreateRental(3, "ngoc@gmail.com", DateFactory.CurrentDate.AddDays(3));
 
             //Then
             Assert.IsFalse(rental.Equals(comparison));
