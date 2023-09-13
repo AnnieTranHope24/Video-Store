@@ -120,7 +120,8 @@ namespace ModelTest
 
             //Then
             Assert.AreEqual(rental.ReturnDate, DateFactory.CurrentDate);
-            //Assert.AreEqual(res, expect);
+            Assert.AreEqual(res.NextRental, expect.NextRental);
+            Assert.AreEqual(res.FulfilledReservation, expect.FulfilledReservation);
             Assert.IsNotNull(res);
         }
 
