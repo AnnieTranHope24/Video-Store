@@ -104,8 +104,11 @@ namespace ModelTest
 
             Rental rental = new Rental()
             {
-                Video = video
+                Video = video,
+                Customer = reservation.Customer,
+                RentalDate = DateFactory.CurrentDate,
             };
+
             ReturnReceipt expect = new ReturnReceipt()
             {
                 NextRental = reservation.Customer.Rent(video),
