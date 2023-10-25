@@ -52,6 +52,7 @@
     <Compile Include="Rating.cs" />
     <Compile Include="Rental.cs" />
     <Compile Include="Reservation.cs" />
+    <Compile Include="ReturnReceipt.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="ZipCode.cs" />
