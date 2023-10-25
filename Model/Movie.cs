@@ -18,7 +18,11 @@ namespace Model
         public virtual float IMDBRating { get; set; }
         public virtual int NumberOfRatings { get; set; }
         public virtual Genre PrimaryGenre { get; set; }
-        public virtual IList<Reservation> Reservations { get; set; }
+        public virtual IList<Reservation> Reservations { get; protected internal set;}
+
+        public Movie() {
+            Reservations = new List<Reservation>();
+        }
 
         public override bool Equals(object obj)
         {
@@ -29,7 +33,7 @@ namespace Model
             else
             {
                 Movie comparison = (Movie)obj;
-                return (Title == comparison.Title) && (Year == comparison.Year);
+                return (String.Equals(Title, comparison.Title) && (Year == comparison.Year));
             }
         }
 
