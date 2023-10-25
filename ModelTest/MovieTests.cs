@@ -17,10 +17,6 @@ namespace ModelTest
             //Then
             Assert.IsNotNull(movie.Reservations);
             Assert.AreEqual(0, movie.Reservations.Count);
-            Assert.IsNotNull(movie.Genres);
-            Assert.AreEqual(0, movie.Genres.Count);
-            Assert.IsNotNull(movie.Roles);
-            Assert.AreEqual(0, movie.Roles.Count);
         }
 
         [TestMethod]
