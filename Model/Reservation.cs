@@ -1,4 +1,5 @@
 ﻿using System;
+using VideoStore.Utilities;
 
 namespace Model
 {
@@ -11,7 +12,7 @@ namespace Model
 
         public Reservation()
         {
-            ReservationDate = DateTime.Now;
+            ReservationDate = DateFactory.CurrentDate;
         }
 
         public override bool Equals(object obj)

@@ -1,4 +1,5 @@
 ﻿using System;
+using VideoStore.Utilities;
 
 namespace Model
 {
@@ -15,7 +16,7 @@ namespace Model
 
         public Video()
         {
-            PurchaseDate = DateTime.Now;
+            PurchaseDate = DateFactory.CurrentDate;
             NewArrival = true;
         }
 

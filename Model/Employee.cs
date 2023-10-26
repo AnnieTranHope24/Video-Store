@@ -1,4 +1,5 @@
 ﻿using System;
+using VideoStore.Utilities;
 
 namespace Model
 {
@@ -16,7 +17,7 @@ namespace Model
 
         public Employee()
         {
-            DateHired = DateTime.Now;
+            DateHired = DateFactory.CurrentDate;
         }
 
         public override bool Equals(object obj)

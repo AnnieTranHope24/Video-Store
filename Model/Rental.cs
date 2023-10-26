@@ -1,4 +1,5 @@
 ﻿using System;
+using VideoStore.Utilities;
 
 namespace Model
 {
@@ -14,7 +15,7 @@ namespace Model
 
         public Rental()
         {
-            RentalDate = DateTime.Now;
+            RentalDate = DateFactory.CurrentDate;
             if (Video.NewArrival)
             {
                 DueDate = RentalDate.AddDays(3);
@@ -28,7 +29,7 @@ namespace Model
         public Rental(Video video)
         {
             Video = video;
-            RentalDate = DateTime.Now;
+            RentalDate = DateFactory.CurrentDate;
             if (Video.NewArrival)
             {
                 DueDate = RentalDate.AddDays(3);
