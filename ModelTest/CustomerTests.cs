@@ -276,9 +276,9 @@ namespace ModelTest
             Store anotherStore = new Store();
             customer.PreferredStores.Add(store);
             customer.PreferredStores.Add(anotherStore);
-
+            
             //When
-            customer.AddPreferredStore(store);
+            customer.AddPreferredStore(store, 0);
 
             //Then
             Assert.IsTrue(customer.PreferredStores.Contains(store));

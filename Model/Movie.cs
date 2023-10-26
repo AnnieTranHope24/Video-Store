@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Model
 {
@@ -23,14 +22,14 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Movie comparison = (Movie)obj;
-                return (String.Equals(Title, comparison.Title) && (Year == comparison.Year));
+                return Title.Equals(comparison.Title) && (Year == comparison.Year);
             }
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Model
+﻿namespace Model
 {
     public class Genre
     {
@@ -13,14 +11,14 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Genre comparison = (Genre)obj;
-                return (String.Equals(Name, comparison.Name));
+                return Name.Equals(comparison.Name);
             }
         }
 

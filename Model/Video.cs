@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -19,19 +15,20 @@ namespace Model
 
         public Video()
         {
-
+            PurchaseDate = DateTime.Now;
+            NewArrival = true;
         }
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Video comparison = (Video)obj;
-                return (Id == comparison.Id);
+                return Id == comparison.Id;
             }
         }
 

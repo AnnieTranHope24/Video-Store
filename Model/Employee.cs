@@ -11,11 +11,12 @@ namespace Model
         public virtual string UserName { get; set; }
         public virtual string Password { get; set; }
         public virtual Store Store { get; set; }
-        public virtual bool IsManager { get; set; }
+        public virtual bool IsManager { get; }
         public virtual Employee Supervisor { get; set; }
 
         public Employee()
         {
+            DateHired = DateTime.Now;
         }
 
         public override bool Equals(object obj)

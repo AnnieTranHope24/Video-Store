@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Model
 {
@@ -23,14 +19,14 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Store comparison = (Store)obj;
-                return (String.Equals(StreetAddress, comparison.StreetAddress) && (ZipCode.Equals(comparison.ZipCode)));
+                return StreetAddress.Equals(comparison.StreetAddress) && ZipCode.Equals(comparison.ZipCode);
             }
         }
 
@@ -54,7 +50,7 @@ namespace Model
 
         }
 
-        public virtual void RemoveManager(Video video)
+        public virtual void RemoveVideo(Video video)
         {
 
         }

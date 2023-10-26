@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Model
 {
@@ -19,8 +15,8 @@ namespace Model
         public virtual IList<Rental> Rentals { get; protected internal set; }
         public virtual IList<Store> PreferredStores { get; protected internal set; }
         public virtual ISet<CommunicationMethod> CommunicationTypes { get; protected internal set; }
-        public virtual string FullName { get; set; }
-        public virtual IList<Rental> LateRentals { get; protected internal set; }
+        public virtual string FullName { get; }
+        public virtual IList<Rental> LateRentals { get; }
 
         public Customer()
         {
@@ -32,14 +28,14 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Customer comparison = (Customer)obj;
-                return (String.Equals(EmailAddress, comparison.EmailAddress));
+                return EmailAddress.Equals(comparison.EmailAddress);
             }
         }
 

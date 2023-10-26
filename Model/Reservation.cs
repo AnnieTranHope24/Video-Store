@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -15,19 +11,19 @@ namespace Model
 
         public Reservation()
         {
-            
+            ReservationDate = DateTime.Now;
         }
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Reservation comparison = (Reservation)obj;
-                return (Movie.Equals(comparison.Movie) && (Customer.Equals(comparison.Customer)));
+                return Movie.Equals(comparison.Movie) && Customer.Equals(comparison.Customer);
             }
         }
 
