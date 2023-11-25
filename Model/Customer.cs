@@ -64,7 +64,7 @@ namespace Model
 
         }
 
-        public virtual void AddPreferredStore(Store store, int pos)
+        public virtual void AddPreferredStore(Store store, int pos = -1)
         {
         
         }

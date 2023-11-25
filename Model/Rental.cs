@@ -16,20 +16,12 @@ namespace Model
         public Rental()
         {
             RentalDate = DateFactory.CurrentDate;
-            if (Video.NewArrival)
-            {
-                DueDate = RentalDate.AddDays(3);
-            }
-            else
-            {
-                DueDate = RentalDate.AddDays(7);
-            }
         }
 
-        public Rental(Video video)
-        {
+        public Rental(Video video, Customer customer) : this()
+            {
             Video = video;
-            RentalDate = DateFactory.CurrentDate;
+            Customer = customer;
             if (Video.NewArrival)
             {
                 DueDate = RentalDate.AddDays(3);

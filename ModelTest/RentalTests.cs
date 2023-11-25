@@ -31,7 +31,8 @@ namespace ModelTest
                 Id = 2,
                 NewArrival = false
             };
-            Rental rental = new Rental(video);
+            Customer cust = new Customer();
+            Rental rental = new Rental(video, cust);
 
             //Then
             Assert.AreEqual(rental.DueDate, rental.RentalDate.AddDays(7.0));
@@ -46,7 +47,8 @@ namespace ModelTest
                 Id = 2,
                 NewArrival = true
             };
-            Rental rental = new Rental(video);
+            Customer cust = new Customer();
+            Rental rental = new Rental(video, cust);
 
             //Then
             Assert.AreEqual(rental.DueDate, rental.RentalDate.AddDays(3.0));
@@ -62,7 +64,8 @@ namespace ModelTest
                 NewArrival = true,
                 Movie = new Movie()
             };
-            Rental rental = new Rental(video);
+            Customer cust = new Customer();
+            Rental rental = new Rental(video, cust);
 
             //Then
             Assert.IsNull(rental.Return());
