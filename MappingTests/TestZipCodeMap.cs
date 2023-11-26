@@ -12,7 +12,7 @@ using Mappings;
 namespace MappingTests
 {
     [TestFixture]
-    public class TestArea
+    public class TestZipCodeMap
     {
         private ISessionFactory _factory;
         private ISession _session;
@@ -20,21 +20,16 @@ namespace MappingTests
         [SetUp]
         public void CreateSession()
         {
-            _factory = SessionFactory.CreateSessionFactory<AreaMap>("videostore");
+            _factory = SessionFactory.CreateSessionFactory<ZipCodeMap>("videostore");
             _session = _factory.GetCurrentSession();
         }
 
         [Test]
         public void TestAreaMapping()
         {
-            var area = new Area()
-            {
-                Name = "Holland",
-                Id = 1
-            };
-            new PersistenceSpecification<Area>(_session)
-                .CheckProperty(e => e.Name, "Holland")
-                .CheckProperty(e => e.Id, 1)
+            new PersistenceSpecification<ZipCode>(_session)
+                .CheckProperty(e => e.State, "Illinois")
+                .CheckProperty(e => e.City, "Chicago")
                 .VerifyTheMappings();
         }
     }

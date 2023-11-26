@@ -12,7 +12,6 @@ namespace Mappings
     {
         public ZipCodeMap()
         {
-            Schema("videostore");
             Id(x => x.Code, "Code").GeneratedBy.Assigned();
             Map(x => x.City);
             Map(x => x.State);

@@ -8,16 +8,15 @@ using System.Threading.Tasks;
 
 namespace Mappings
 {
-    public class AreaMap : ClassMap<Area>
+    public class StoreMap : ClassMap<Store>
     {
-        public AreaMap() 
+        public StoreMap()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.StreetAddress);
+            Map(x => x.PhoneNumber);
 
-            HasManyToMany<ZipCode>(x => x.ZipCodes)
-                .Cascade.All().Inverse();
-                
+            HasMany<Video>(x => x.Videos).Cascade.All().Inverse();
         }
     }
 }

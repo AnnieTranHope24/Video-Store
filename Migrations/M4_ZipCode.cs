@@ -20,8 +20,8 @@ namespace Migrations
             Create.Table("ZipCodes")
                 .InSchema("videostore")
                 .WithColumn("Code").AsString(255).PrimaryKey()
-                .WithColumn("City").AsString(255)
-                .WithColumn("State").AsString(255);
+                .WithColumn("City").AsString(255).NotNullable()
+                .WithColumn("State").AsString(255).NotNullable();
         }
     }
 }

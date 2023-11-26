@@ -12,21 +12,15 @@ namespace Migrations
     {
         public override void Down()
         {
-            Delete.Table("AreaZipCodes").InSchema("videostore");
-            Delete.Table("Areas").InSchema("videostore");
+            Delete.Table("Area").InSchema("videostore");
         }
 
         public override void Up()
         {
-            Create.Table("Areas")
+            Create.Table("Area")
                 .InSchema("videostore")
                 .WithColumn("ID").AsInt64().Identity().PrimaryKey()
                 .WithColumn("Name").AsString(255);
-
-            Create.Table("AreaZipCodes")
-                .InSchema("videostore")
-                .WithColumn("AreaID").AsInt64().ForeignKey("Areas", "ID")
-                .WithColumn("ZipCodeID").AsString(255).ForeignKey("ZipCodes", "Code");
 
             Create.UniqueConstraint("UC_AreaZipCodes")
                 .OnTable("AreaZipCodes")

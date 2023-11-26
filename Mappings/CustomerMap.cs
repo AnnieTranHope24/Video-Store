@@ -17,6 +17,11 @@ namespace Mappings
             Map(x => x.StreetAddress);
             Map(x => x.Password);
             Map(x => x.Phone);
+
+            HasManyToMany(x => x.PreferredStores)
+                .ParentKeyColumn("CustomerID")
+                .Inverse()
+                .Cascade.All();
         }
     }
 }
