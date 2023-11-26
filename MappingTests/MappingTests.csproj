@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerMapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestArea.cs" />
   </ItemGroup>

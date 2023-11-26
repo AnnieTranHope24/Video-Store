@@ -19,7 +19,6 @@ namespace MappingTests
         [SetUp]
         public void CreateSession()
         {
-            _session = SessionFactory.Crea
         }
     }
 }
