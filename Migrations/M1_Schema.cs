@@ -8,7 +8,7 @@ using FluentMigrator;
 namespace Migrations
 {
     [Migration(1)]
-    public class M1_Schema : Migration
+    public class M1_Schema : Migration 
     {
         public override void Down()
         {
