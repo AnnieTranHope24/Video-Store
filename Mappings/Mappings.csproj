@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="AreaMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionFactoryVideoStore.cs" />
     <Compile Include="ZipCodeMap.cs" />
   </ItemGroup>
   <ItemGroup>
