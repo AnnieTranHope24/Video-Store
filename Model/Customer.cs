@@ -33,11 +33,11 @@ namespace Model
                 return lateRentals.ToList();
             }
         }
-        private string password;
+        private string _password;
         public virtual string Password {
             get 
             { 
-                return password;
+                return _password;
             }
             set { 
                 if(value.Length < 6)
@@ -60,7 +60,7 @@ namespace Model
                     throw new ArgumentException("The password must contain at least 1 number.");
                 }
 
-                password = value;
+                _password = value;
             }
         }
 

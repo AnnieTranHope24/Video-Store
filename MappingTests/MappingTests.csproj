@@ -95,11 +95,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Utilities, Version=2023.1.0.22525, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\csci392.Utilities.2023.1.0\lib\net48\Utilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerMapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestArea.cs" />
+    <Compile Include="VideoMapTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
