@@ -16,6 +16,8 @@ namespace Migrations
             Create.Table("Customer")
                 .InSchema("videostore")
                 .WithColumn("Id").AsInt64().Identity().PrimaryKey()
+                .WithColumn("First").AsString(255).NotNullable()
+                .WithColumn("Last").AsString(255).NotNullable()
                 .WithColumn("EmailAddress").AsString(255).NotNullable()
                 .WithColumn("StreetAddress").AsString(255).NotNullable()
                 .WithColumn("Password").AsString(255).NotNullable()
