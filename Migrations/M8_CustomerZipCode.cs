@@ -16,14 +16,14 @@ namespace Migrations
                 .OnTable("Customer")
                 .InSchema("videostore");
 
-            Delete.Column("Customer_Id")
+            Delete.Column("ZipCode_Id")
                 .FromTable("Customer")
                 .InSchema("videostore");
         }
 
         public override void Up()
         {
-            Create.Column("Customer_Id")
+            Create.Column("ZipCode_Id")
                 .OnTable("Customer")
                 .InSchema("videostore")
                 .AsString(255)
