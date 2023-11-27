@@ -14,8 +14,11 @@ namespace Mappings
             Map(x => x.Phone);
             Component(x => x.Name, m =>
             {
-                m.Map(x => x.First, "First");
-                m.Map(x => x.Last, "Last");
+                m.Map(x => x.Title);
+                m.Map(x => x.First);
+                m.Map(x => x.Middle);
+                m.Map(x => x.Last);
+                m.Map(x => x.Suffix);
             });
         }
     }

@@ -69,6 +69,7 @@ namespace Model
             Rentals = new List<Rental>();
             PreferredStores = new List<Store>();
             CommunicationTypes = new HashSet<CommunicationMethod>();
+            Name = new Name();
         }
 
         public override bool Equals(object obj)

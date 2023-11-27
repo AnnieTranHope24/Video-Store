@@ -23,12 +23,11 @@ namespace MappingTests
         public void TestCustomerMapping()
         {
             new PersistenceSpecification<Customer>(_session)
-                .CheckProperty(e => e.EmailAddress, "annie.tran@hope.edu")
+                .CheckProperty(e => e.EmailAddress, "ryan.mcfall@hope.edu")
                 .CheckProperty(e => e.StreetAddress, "141 10th St Holland, MI")
                 .CheckProperty(e => e.Password, "helloWorld1")
                 .CheckProperty(e => e.Phone, "6162345678")
-                .CheckProperty(e => e.Name.First, "Annie")
-                .CheckProperty(e => e.Name.Last, "Tran")
+                .CheckProperty(e => e.Name, new Name() { Title = "Dr.", First = "Ryan", Last = "McFall", Middle = "Lee", Suffix = "I" })
                 .VerifyTheMappings();
         }
     }
