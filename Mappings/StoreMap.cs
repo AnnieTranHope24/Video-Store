@@ -11,7 +11,7 @@ namespace Mappings
             Map(x => x.StreetAddress);
             Map(x => x.PhoneNumber);
 
-            HasOne(x => x.ZipCode).Cascade.All();
+            References(x => x.ZipCode);
         }
     }
 }
