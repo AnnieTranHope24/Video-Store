@@ -200,7 +200,33 @@ namespace ModelTest
             Assert.AreEqual(customer.Reservation, res);
         }
 
-        [TestMethod] public void TestAllow()
+        [TestMethod]
+        public void shouldRent()
+        {
+            //Given
+            Customer customer = new Customer()
+            {
+                Name = new Name()
+                {
+                    First = "Stu",
+                    Last = "Dent"
+                },
+                EmailAddress = "annie@hope.edu"
+            };
+            Video video = new Video();
+            Rental expected = new Rental(video, customer);
+
+            //When
+            Rental actual = customer.Rent(video);
+
+            //Then
+            Assert.AreEqual(actual, expected);
+
+           
+        }
+
+        [TestMethod] 
+        public void TestAllow()
         {
             //Given
             Customer customer = new Customer()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -47,12 +48,17 @@ namespace Model
 
         public virtual void AddVideo(Video video)
         {
-
+            video.Store = this;
+            Videos.Add(video);
         }
 
         public virtual void RemoveVideo(Video video)
         {
-
+            if (!Videos.Remove(video))
+            {
+                string message = $"Attempted to remove video with ID {video.Id} from store with ID {Id}; the store does not own this video";
+                throw new ArgumentException(message);
+            }
         }
     }
 }

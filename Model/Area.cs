@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -34,12 +35,16 @@ namespace Model
 
         public virtual void AddZipCode(ZipCode zipCode)
         {
-
+            ZipCodes.Add(zipCode);
         }
 
         public virtual void RemoveZipCode(ZipCode zipCode)
         {
-
+            if (!ZipCodes.Remove(zipCode))
+            {
+                string message = $"RemoveZipCode: The zip code with code {zipCode.Code} does not exist in the area with name {Name}";
+                throw new ArgumentException(message);
+            }
         }
     }
 }

@@ -97,17 +97,21 @@ namespace Model
 
         public virtual Rental Rent(Video video)
         {
-            return null;
+            Rental rental = new Rental(video, this);
+            Rentals.Add(rental);
+            return rental;
         }
 
         public virtual void Allow(CommunicationMethod communicationMethod)
         {
-
+            CommunicationTypes.Add(communicationMethod);
+            communicationMethod.Customers.Add(this);
         }
 
         public virtual void Deny(CommunicationMethod communicationMethod)
         {
-
+            CommunicationTypes.Remove(communicationMethod);
+            communicationMethod.Customers.Remove(this);
         }
 
         public virtual void AddPreferredStore(Store store, int pos = -1)
