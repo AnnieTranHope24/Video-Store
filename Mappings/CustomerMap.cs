@@ -1,14 +1,9 @@
 ﻿using FluentNHibernate.Mapping;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mappings
 {
-    public class CustomerMap :ClassMap<Customer>
+    public class CustomerMap : ClassMap<Customer>
     {
         public CustomerMap() 
         {
@@ -17,11 +12,6 @@ namespace Mappings
             Map(x => x.StreetAddress);
             Map(x => x.Password);
             Map(x => x.Phone);
-
-            HasManyToMany(x => x.PreferredStores)
-                .ParentKeyColumn("CustomerID")
-                .Inverse()
-                .Cascade.All();
         }
     }
 }

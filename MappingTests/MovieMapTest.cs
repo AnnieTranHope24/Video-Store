@@ -21,22 +21,20 @@ namespace MappingTests
         [Test]
         public void TestMovieMapping()
         {
-            var Movie = new Movie()
+            var Expected = new Movie()
             {
-                Id = 1,
-                Year = 2020,
-                Title = "MovieTitle",
-                OriginalTitle = "OriginalMovieTitle",
-                RunningTimeInMinutes = 40,
-                Director = "Director",
-                Rating = "A rating",
-                IMDBRating = 10,
-                NumberOfRatings = 1,
+                Year = 1986,
+                Title = "Hoosiers",
+                OriginalTitle = "Hoosiers",
+                RunningTimeInMinutes = 114,
+                Rating = "PG",
+                IMDBRating = 7.5F,
+                NumberOfRatings = 44053,
             };
 
-            _session.Save(Movie);
+            Movie Actual = _session.Load<Movie>("tt0091217");
 
-            Assert.AreEqual(_session.Load<Movie>(1), Movie);
+            Assert.AreEqual(Actual, Expected);
         }
     }
 }

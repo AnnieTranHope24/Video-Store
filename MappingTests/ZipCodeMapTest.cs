@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NHibernate;
 using FluentNHibernate.Testing;
 using Model;
@@ -12,7 +7,7 @@ using Mappings;
 namespace MappingTests
 {
     [TestFixture]
-    public class TestZipCodeMap
+    public class ZipCodeMapTest
     {
         private ISessionFactory _factory;
         private ISession _session;
@@ -25,12 +20,19 @@ namespace MappingTests
         }
 
         [Test]
-        public void TestAreaMapping()
+        public void TestZipCodeMapping()
         {
-            new PersistenceSpecification<ZipCode>(_session)
-                .CheckProperty(e => e.State, "Illinois")
-                .CheckProperty(e => e.City, "Chicago")
-                .VerifyTheMappings();
+
+            var ZipCode = new ZipCode()
+            {
+                Code = "49423",
+                City = "Holland",
+                State = "MI"
+            };
+
+            ZipCode Actual = _session.Load<ZipCode>("49423");
+
+            Assert.AreEqual(Actual, ZipCode);
         }
     }
 }

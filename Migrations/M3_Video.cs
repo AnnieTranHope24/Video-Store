@@ -7,13 +7,13 @@ namespace Migrations
     {
         public override void Down()
         {
-            Delete.Table("Video")
+            Delete.Table("Videos")
                 .InSchema("videostore");
         }
 
         public override void Up()
         {
-            Create.Table("Video")
+            Create.Table("Videos")
                 .InSchema("videostore")
                 .WithColumn("Id").AsInt64().Identity().PrimaryKey()
                 .WithColumn("NewArrival").AsBinary().NotNullable()

@@ -1,9 +1,4 @@
 ﻿using FluentMigrator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Migrations
 {
@@ -12,12 +7,12 @@ namespace Migrations
     {
         public override void Down()
         {
-            Delete.Table("ZipCodes").InSchema("videostore");
+            Delete.Table("ZipCode").InSchema("videostore");
         }
 
         public override void Up()
         {
-            Create.Table("ZipCodes")
+            Create.Table("ZipCode")
                 .InSchema("videostore")
                 .WithColumn("Code").AsString(255).PrimaryKey()
                 .WithColumn("City").AsString(255).NotNullable()

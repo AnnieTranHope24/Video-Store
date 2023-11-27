@@ -19,12 +19,8 @@ namespace Migrations
         {
             Create.Table("Area")
                 .InSchema("videostore")
-                .WithColumn("ID").AsInt64().Identity().PrimaryKey()
+                .WithColumn("Id").AsInt64().Identity().PrimaryKey()
                 .WithColumn("Name").AsString(255);
-
-            Create.UniqueConstraint("UC_AreaZipCodes")
-                .OnTable("AreaZipCodes")
-                .Columns("AreaID", "ZipCodeID");
         }
     }
 }

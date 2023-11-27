@@ -27,14 +27,8 @@ namespace MappingTests
         [Test]
         public void TestAreaMapping()
         {
-            var area = new Area()
-            {
-                Name = "Holland",
-                Id = 1
-            };
             new PersistenceSpecification<Area>(_session)
                 .CheckProperty(e => e.Name, "Holland")
-                .CheckProperty(e => e.Id, 1)
                 .VerifyTheMappings();
         }
     }

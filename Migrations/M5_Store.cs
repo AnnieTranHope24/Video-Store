@@ -1,10 +1,5 @@
 ﻿
 using FluentMigrator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Migrations
 {
@@ -13,17 +8,16 @@ namespace Migrations
     {
         public override void Down()
         {
-            Delete.Table("Stores").InSchema("videostore");
+            Delete.Table("Store").InSchema("videostore");
         }
 
         public override void Up()
         {
 
-        Create.Table("Stores")
+        Create.Table("Store")
                 .InSchema("videostore")
-                .WithColumn("ID").AsInt64().Identity().PrimaryKey()
+                .WithColumn("Id").AsInt64().Identity().PrimaryKey()
                 .WithColumn("StreetAddress").AsString(255).NotNullable()
-                .WithColumn("ZipCodeID").AsString(255).ForeignKey("ZipCodes", "Code")
                 .WithColumn("PhoneNumber").AsString(255);
         }
     }
