@@ -3,11 +3,6 @@ using Mappings;
 using Model;
 using NHibernate;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MappingTests
 {
@@ -22,6 +17,10 @@ namespace MappingTests
         {
             _factory = SessionFactory.CreateSessionFactory<StoreMap>("videostore");
             _session = _factory.GetCurrentSession();
+            _session.CreateSQLQuery("delete from videostore.Store")
+                .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.ZipCode")
+                .ExecuteUpdate();              
         }
 
         [Test]
@@ -30,6 +29,7 @@ namespace MappingTests
             new PersistenceSpecification<Store>(_session)
                 .CheckProperty(e => e.StreetAddress, "141 10th St Holland, MI")
                 .CheckProperty(e => e.PhoneNumber, "6162345678")
+                .CheckReference(e => e.ZipCode, new ZipCode() { Code = "49423", City = "Holland", State = "MI"})
                 .VerifyTheMappings();
         }
     }

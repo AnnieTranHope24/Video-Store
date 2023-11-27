@@ -10,6 +10,8 @@ namespace Mappings
             Id(x => x.Id);
             Map(x => x.StreetAddress);
             Map(x => x.PhoneNumber);
+
+            HasOne(x => x.ZipCode).Cascade.All();
         }
     }
 }
