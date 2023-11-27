@@ -10,6 +10,8 @@ namespace MappingTests
             Id(x => x.Id);
             Map(x => x.PurchaseDate);
             Map(x => x.NewArrival);
+
+            References(x => x.Store);
         }
     }
 }

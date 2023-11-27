@@ -1,5 +1,10 @@
 ﻿using FluentNHibernate.Mapping;
 using Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Mappings
 {
@@ -7,14 +12,16 @@ namespace Mappings
     {
         public MovieMap()
         {
-            Id(x => x.Id, "TitleID").GeneratedBy.Assigned();
-            Map(x => x.Year, "YearReleased");
+            Id(x => x.Id).GeneratedBy.Assigned();
+            Map(x => x.Year);
             Map(x => x.Title);
             Map(x => x.OriginalTitle);
             Map(x => x.RunningTimeInMinutes);
-            Map(x => x.Rating, "MPAARating");
+            Map(x => x.Director);
+            Map(x => x.Rating);
             Map(x => x.IMDBRating);
-            Map(x => x.NumberOfRatings, "IMDBNumberRatings");
+            Map(x => x.NumberOfRatings);
+
         }
     }
 }

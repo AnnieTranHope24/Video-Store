@@ -20,6 +20,8 @@ namespace Mappings
                 m.Map(x => x.Last);
                 m.Map(x => x.Suffix);
             });
+
+            References(x => x.ZipCode);
         }
     }
 }
