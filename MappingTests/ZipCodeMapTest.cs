@@ -3,6 +3,7 @@ using NHibernate;
 using FluentNHibernate.Testing;
 using Model;
 using Mappings;
+using VideoStore.Utilities;
 
 namespace MappingTests
 {
@@ -22,17 +23,9 @@ namespace MappingTests
         [Test]
         public void TestZipCodeMapping()
         {
-
-            var ZipCode = new ZipCode()
-            {
-                Code = "49423",
-                City = "Holland",
-                State = "MI"
-            };
-
-            ZipCode Actual = _session.Load<ZipCode>("49423");
-
-            Assert.AreEqual(Actual, ZipCode);
+            new PersistenceSpecification<ZipCode>(_session, new DateEqualityComparer())
+                .CheckProperty(e => e.City, "Holland")
+                .CheckProperty(e => e.State, "MI");
         }
     }
 }
