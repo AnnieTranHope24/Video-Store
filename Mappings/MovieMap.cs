@@ -18,10 +18,8 @@ namespace Mappings
             Map(x => x.OriginalTitle);
             Map(x => x.RunningTimeInMinutes);
             Map(x => x.Rating, "MPAARating");
-            Map(x => x.Director);
             Map(x => x.IMDBRating);
             Map(x => x.NumberOfRatings, "IMDBNumberRatings");
-
         }
     }
 }
