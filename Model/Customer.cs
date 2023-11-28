@@ -28,7 +28,7 @@ namespace Model
         { 
             get
             {
-                IEnumerable<Rental> lateRentals = Rentals.Where(rental => rental.ReturnDate == null && rental.DueDate < DateFactory.CurrentDate).OrderByDescending(rental => rental.DueDate);
+                IEnumerable<Rental> lateRentals = Rentals.Where(rental => rental.ReturnDate == null && rental.DueDate < DateFactory.CurrentDate).OrderBy(rental => rental.DueDate);
 
                 return lateRentals.ToList();
             }

@@ -26,7 +26,8 @@ namespace MappingTests
         {
             new PersistenceSpecification<Video>(_session, new DateEqualityComparer())
                 .CheckProperty(e => e.NewArrival, false)
-                .CheckProperty(e => e.PurchaseDate, DateTime.Now);
+                .CheckProperty(e => e.PurchaseDate, DateTime.Now)
+                .VerifyTheMappings();
         }
     }
 }

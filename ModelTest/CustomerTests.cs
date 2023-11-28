@@ -166,8 +166,8 @@ namespace ModelTest
 
             //Then
             Assert.AreEqual(customer.LateRentals.Count, 2);
-            Assert.AreEqual(customer.LateRentals[0], lateRental2);
-            Assert.AreEqual(customer.LateRentals[1], lateRental1);
+            Assert.AreEqual(customer.LateRentals[0], lateRental1);
+            Assert.AreEqual(customer.LateRentals[1], lateRental2);
         }
 
         [TestMethod]
