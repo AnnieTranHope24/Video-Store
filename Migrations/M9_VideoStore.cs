@@ -26,8 +26,8 @@ namespace Migrations
             Create.Column("Store_Id")
                 .OnTable("Video")
                 .InSchema("videostore")
-                .AsString(255)
-                .Nullable();
+                .AsInt64()
+                .NotNullable();
 
             Create.ForeignKey("VideoToStore")
                 .FromTable("Video")
@@ -36,7 +36,7 @@ namespace Migrations
                 .ToTable("Store")
                 .InSchema("videostore")
                 .PrimaryColumn("Id")
-                .OnDelete(System.Data.Rule.SetNull)
+                .OnDelete(System.Data.Rule.Cascade)
                 .OnUpdate(System.Data.Rule.Cascade);
         }
     }

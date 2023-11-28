@@ -19,6 +19,10 @@ namespace MappingTests
         {
             _factory = SessionFactory.CreateSessionFactory<VideoMap>("videostore");
             _session = _factory.GetCurrentSession();
+            _session.CreateSQLQuery("delete from videostore.Video")
+                .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.Store")
+                .ExecuteUpdate();
         }
 
         [Test]
@@ -27,6 +31,7 @@ namespace MappingTests
             new PersistenceSpecification<Video>(_session, new DateEqualityComparer())
                 .CheckProperty(e => e.NewArrival, false)
                 .CheckProperty(e => e.PurchaseDate, DateTime.Now)
+                .CheckReference(e => e.Store, new Store() { StreetAddress = "141 E 10th St", PhoneNumber = "6161234567", ZipCode = new ZipCode() { Code = "49423", City = "Holland", State = "MI" } })
                 .VerifyTheMappings();
         }
     }

@@ -13,15 +13,12 @@
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            if (obj is ZipCode)
             {
-                return false;
+                ZipCode z = (ZipCode)obj;
+                return z.Code.Equals(this.Code);
             }
-            else
-            {
-                ZipCode comparison = (ZipCode)obj;
-                return Code.Equals(comparison.Code);
-            }
+            return false;
         }
 
         public override int GetHashCode()

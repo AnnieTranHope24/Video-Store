@@ -17,6 +17,10 @@ namespace MappingTests
         {
             _factory = SessionFactory.CreateSessionFactory<CustomerMap>("videostore");
             _session = _factory.GetCurrentSession();
+            _session.CreateSQLQuery("delete from videostore.Customer")
+                .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.ZipCode")
+                .ExecuteUpdate();
         }
 
         [Test]
@@ -28,6 +32,7 @@ namespace MappingTests
                 .CheckProperty(e => e.Password, "helloWorld1")
                 .CheckProperty(e => e.Phone, "6162345678")
                 .CheckProperty(e => e.Name, new Name() { Title = "Dr.", First = "Ryan", Last = "McFall", Middle = "Lee", Suffix = "I" })
+                .CheckReference(e => e.ZipCode, new ZipCode() { Code = "49423", City = "Holland", State = "MI" })
                 .VerifyTheMappings();
         }
     }

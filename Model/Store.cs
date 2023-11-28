@@ -20,15 +20,12 @@ namespace Model
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            if (obj is Store)
             {
-                return false;
+                Store s = (Store)obj;
+                return s.StreetAddress.Equals(this.StreetAddress) && s.ZipCode.Equals(this.ZipCode);
             }
-            else
-            {
-                Store comparison = (Store)obj;
-                return StreetAddress.Equals(comparison.StreetAddress) && ZipCode.Equals(comparison.ZipCode);
-            }
+            return false;
         }
 
         public override int GetHashCode()
