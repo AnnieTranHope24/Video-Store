@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="M10_ZipCodeArea.cs" />
+    <Compile Include="M11_CustomerStore.cs" />
     <Compile Include="M2_Customer.cs" />
     <Compile Include="M3_Video.cs" />
     <Compile Include="M5_Store.cs" />

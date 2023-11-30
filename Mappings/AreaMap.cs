@@ -8,7 +8,9 @@ namespace Mappings
         public AreaMap() 
         {
             Id(x => x.Id);
-            Map(x => x.Name);    
+            Map(x => x.Name); 
+            
+            HasMany<ZipCode>(x => x.ZipCodes).Inverse().Cascade.All();
         }
     }
 }

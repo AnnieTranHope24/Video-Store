@@ -116,12 +116,25 @@ namespace Model
 
         public virtual void AddPreferredStore(Store store, int pos = -1)
         {
-        
+            if (PreferredStores.Contains(store))
+            {
+                PreferredStores.Remove(store);
+            }
+
+            if (pos == -1)
+            {
+                PreferredStores.Add(store);
+            }
+            else
+            {
+                PreferredStores.Insert(pos, store);
+
+            }
         }
 
         public virtual void RemovePreferredStore(Store store)
         {
-
+            PreferredStores.Remove(store);
         }
     }
 }
