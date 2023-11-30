@@ -12,6 +12,11 @@ namespace Migrations
     {
         public override void Down()
         {
+
+            // Code to create an entirely different table.
+            // Delete.Table("CustomerStore")
+            //    .InSchema("videostore");
+
             Delete.ForeignKey("CustomerStore")
                 .OnTable("Customer")
                 .InSchema("videostore");
@@ -23,6 +28,20 @@ namespace Migrations
 
         public override void Up()
         {
+            // If we need to create a table
+            //Create.Table("CustomerStore")
+            //    .InSchema("videostore")
+            //    .WithColumn("Customer_Id").AsInt64().NotNullable()
+            //    .WithColumn("Store_Id").AsInt64().NotNullable();
+
+            //Create.ForeignKey("FK_CustomerStore_Customer")
+            //    .FromTable("CustomerStore").ForeignColumn("Customer_Id")
+            //    .ToTable("Customer").InSchema("videostore").PrimaryColumn("Id");
+
+            //Create.ForeignKey("FK_AreaZipCode_Store")
+            //    .FromTable("CustomerStore").ForeignColumn("Store_Id")
+            //    .ToTable("Store").InSchema("videostore").PrimaryColumn("Id");
+
             Create.Column("Store_Id")
                 .OnTable("Customer")
                 .InSchema("videostore")
