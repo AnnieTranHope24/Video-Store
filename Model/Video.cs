@@ -18,19 +18,17 @@ namespace Model
         {
             PurchaseDate = DateFactory.CurrentDate;
             NewArrival = true;
+            Store = new Store();
         }
 
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            if (obj is Video)
             {
-                return false;
+                Video v = (Video)obj;
+                return v.Id.Equals(this.Id);
             }
-            else
-            {
-                Video comparison = (Video)obj;
-                return Id == comparison.Id;
-            }
+            return false;
         }
 
         public override int GetHashCode()

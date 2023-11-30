@@ -3,6 +3,8 @@ using Mappings;
 using Model;
 using NHibernate;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace MappingTests
 {
@@ -20,7 +22,9 @@ namespace MappingTests
             _session.CreateSQLQuery("delete from videostore.Store")
                 .ExecuteUpdate();
             _session.CreateSQLQuery("delete from videostore.ZipCode")
-                .ExecuteUpdate();              
+                .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.Video")
+                .ExecuteUpdate();
         }
 
         [Test]
@@ -30,6 +34,22 @@ namespace MappingTests
                 .CheckProperty(e => e.StreetAddress, "141 10th St Holland, MI")
                 .CheckProperty(e => e.PhoneNumber, "6162345678")
                 .CheckReference(e => e.ZipCode, new ZipCode() { Code = "49423", City = "Holland", State = "MI"})
+                .CheckList(e => e.Videos,
+                new List<Video>()
+                {
+                    new Video()
+                    {
+                        NewArrival = false,
+                        PurchaseDate = DateTime.Now, 
+                    },
+                    new Video()
+                    {
+                        NewArrival = false,
+                        PurchaseDate = DateTime.Now
+                    }
+                },
+                (store, video) => store.AddVideo(video)
+                )
                 .VerifyTheMappings();
         }
     }

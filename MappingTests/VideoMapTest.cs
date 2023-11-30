@@ -23,6 +23,8 @@ namespace MappingTests
                 .ExecuteUpdate();
             _session.CreateSQLQuery("delete from videostore.Store")
                 .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.ZipCode")
+                .ExecuteUpdate();
         }
 
         [Test]
