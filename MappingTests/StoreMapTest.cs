@@ -34,7 +34,7 @@ namespace MappingTests
                 .CheckProperty(e => e.StreetAddress, "141 10th St Holland, MI")
                 .CheckProperty(e => e.PhoneNumber, "6162345678")
                 .CheckReference(e => e.ZipCode, new ZipCode() { Code = "49423", City = "Holland", State = "MI"})
-                .CheckList(e => e.Videos,
+                .CheckInverseList(e => e.Videos,
                 new List<Video>()
                 {
                     new Video()
