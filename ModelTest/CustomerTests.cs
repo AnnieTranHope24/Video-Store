@@ -295,7 +295,8 @@ namespace ModelTest
                 StreetAddress = "141 E 12th St",
                 ZipCode = new ZipCode()
                 {
-                    Code = "49423"
+                    Code = "49423 '/" +
+                    "]="
                 }
             };
             Store anotherStore = new Store();
@@ -303,7 +304,7 @@ namespace ModelTest
             customer.PreferredStores.Add(anotherStore);
             
             //When
-            customer.AddPreferredStore(store, 0);
+            customer.AddPreferredStore(store, 1);
 
             //Then
             Assert.IsTrue(customer.PreferredStores.Contains(store));

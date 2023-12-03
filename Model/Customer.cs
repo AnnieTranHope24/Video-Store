@@ -128,13 +128,15 @@ namespace Model
             else
             {
                 PreferredStores.Insert(pos, store);
-
             }
         }
 
         public virtual void RemovePreferredStore(Store store)
         {
-            PreferredStores.Remove(store);
+            if (!PreferredStores.Remove(store))
+            {
+                throw new ArgumentException($"Attempt to remove store {store} from customer {FullName}'s list of preferred stores when it does not exist");
+            }
         }
     }
 }
