@@ -18,7 +18,7 @@ namespace Migrations
                 .InSchema("videostore")
                 .WithColumn("Id").AsInt64().Identity().PrimaryKey()
                 .WithColumn("StreetAddress").AsString(255).NotNullable()
-                .WithColumn("PhoneNumber").AsString(255);
+                .WithColumn("PhoneNumber").AsString(255).Nullable();
         }
     }
 }

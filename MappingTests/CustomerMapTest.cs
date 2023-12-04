@@ -3,6 +3,7 @@ using Mappings;
 using Model;
 using NHibernate;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace MappingTests
 {
@@ -33,6 +34,24 @@ namespace MappingTests
                 .CheckProperty(e => e.Phone, "6162345678")
                 .CheckProperty(e => e.Name, new Name() { Title = "Dr.", First = "Ryan", Last = "McFall", Middle = "Lee", Suffix = "I" })
                 .CheckReference(e => e.ZipCode, new ZipCode() { Code = "49423", City = "Holland", State = "MI" })
+                .CheckInverseList(e => e.PreferredStores,
+                new List<Store>()
+                {
+                    new Store()
+                    {
+                        StreetAddress = "141 10th St Holland, MI",
+                        ZipCode = new ZipCode(){ Code = "22772", City = "Holland", State = "MI" },
+                        
+
+                    },
+                    new Store()
+                    {
+                        StreetAddress = "115 10th St Holland, MI",
+                        ZipCode = new ZipCode(){ Code = "12345", City = "Holland", State = "MI" }
+                    }
+                },
+                (customer, store) => customer.AddPreferredStore(store)
+                )
                 .VerifyTheMappings();
         }
     }

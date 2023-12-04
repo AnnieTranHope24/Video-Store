@@ -22,9 +22,10 @@ namespace Mappings
             });
 
             References(x => x.ZipCode);
-            HasMany<Store>(x => x.PreferredStores)
+            HasManyToMany<Store>(x => x.PreferredStores)
                 .Inverse()
-                .Cascade.All();
+                .Cascade.All()
+                .AsList(index => index.Column("StoreOrder")); 
         }
     }
 }
