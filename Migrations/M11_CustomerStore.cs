@@ -7,6 +7,10 @@ namespace Migrations
     {
         public override void Down()
         {
+            Delete.UniqueConstraint("PK_CustomerStore")
+                .FromTable("CustomerStore")
+                .InSchema("videostore");
+
             Delete.ForeignKey("FK_CustomerStore_Customer")
                 .OnTable("CustomerStore")
                 .InSchema("videostore");
@@ -23,8 +27,10 @@ namespace Migrations
         {
             Create.Table("CustomerStore")
                 .InSchema("videostore")
-                .WithColumn("Customer_Id").AsInt64().NotNullable().PrimaryKey()
-                .WithColumn("Store_Id").AsInt64().NotNullable().PrimaryKey();
+                .WithColumn("Customer_Id").AsInt64().NotNullable()
+                .WithColumn("Store_Id").AsInt64().NotNullable()
+                .WithColumn("StoreOrder").AsInt64().Nullable();
+            .
 
             Create.ForeignKey("FK_CustomerStore_Customer")
                 .FromTable("CustomerStore")
@@ -45,6 +51,11 @@ namespace Migrations
                 .PrimaryColumn("Id")
                 .OnDelete(System.Data.Rule.None)
                 .OnUpdate(System.Data.Rule.None);
+
+            Create.UniqueConstraint("PK_CustomerStore")
+                .OnTable("CustomerStore")
+                .WithSchema("videostore")
+                .Columns("Customer_Id", "Store_Id");
         }
     }
 }

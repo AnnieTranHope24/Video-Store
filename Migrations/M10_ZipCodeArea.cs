@@ -7,6 +7,10 @@ namespace Migrations
     {
         public override void Down()
         {
+            Delete.UniqueConstraint("PK_AreaZipCode")
+                .FromTable("AreaZipCode")
+                .InSchema("videostore");
+
             Delete.ForeignKey("FK_AreaZipCode_Area")
                 .OnTable("AreaZipCode")
                 .InSchema("videostore");
@@ -23,8 +27,8 @@ namespace Migrations
         {
             Create.Table("AreaZipCode")
                 .InSchema("videostore")
-                .WithColumn("Area_Id").AsInt64().NotNullable().PrimaryKey()
-                .WithColumn("ZipCode_Id").AsString(255).NotNullable().PrimaryKey();
+                .WithColumn("Area_Id").AsInt64().NotNullable()
+                .WithColumn("ZipCode_Id").AsString(255).NotNullable();
 
             Create.ForeignKey("FK_AreaZipCode_Area")
                 .FromTable("AreaZipCode")
@@ -45,6 +49,11 @@ namespace Migrations
                 .PrimaryColumn("Code")
                 .OnDelete(System.Data.Rule.Cascade)
                 .OnUpdate(System.Data.Rule.Cascade);
+
+            Create.UniqueConstraint("PK_AreaZipCode")
+                .OnTable("AreaZipCode")
+                .WithSchema("videostore")
+                .Columns("Area_Id", "ZipCode_Id");
         }
     }
 }
