@@ -16,7 +16,7 @@ namespace Migrations
                 .InSchema("videostore");
 
             Delete.Table("AreaZipCode")
-               .InSchema("videostore");
+                .InSchema("videostore");
         }
 
         public override void Up()
