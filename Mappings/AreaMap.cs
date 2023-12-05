@@ -11,7 +11,6 @@ namespace Mappings
             Map(x => x.Name);
 
             HasManyToMany<ZipCode>(x => x.ZipCodes)
-                .Inverse()
                 .Cascade.All();
         }
     }

@@ -11,7 +11,7 @@ namespace MappingTests
             Map(x => x.PurchaseDate);
             Map(x => x.NewArrival);
 
-            References(x => x.Store);
+            References(x => x.Store).Cascade.All();
         }
     }
 }
