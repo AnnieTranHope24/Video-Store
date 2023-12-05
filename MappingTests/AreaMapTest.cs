@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NHibernate;
 using FluentNHibernate.Testing;
 using Model;
 using Mappings;
+using System.Collections.Generic;
+using System;
 
 namespace MappingTests
 {
@@ -22,6 +19,8 @@ namespace MappingTests
         {
             _factory = SessionFactory.CreateSessionFactory<AreaMap>("videostore");
             _session = _factory.GetCurrentSession();
+            _session.CreateSQLQuery("delete from videostore.ZipCode")
+                .ExecuteUpdate();
         }
 
         [Test]
@@ -29,6 +28,20 @@ namespace MappingTests
         {
             new PersistenceSpecification<Area>(_session)
                 .CheckProperty(e => e.Name, "Holland")
+                .CheckInverseBag(e => e.ZipCodes,
+                new List<ZipCode>()
+                {
+                    new ZipCode()
+                    {
+                        Code = "49423", City = "Holland", State = "MI"
+                    },
+                    new ZipCode()
+                    {
+                        Code = "12345", City = "New York", State = "New York"
+                    }
+                },
+                (area, zipcode) => area.AddZipCode(zipcode)
+                )
                 .VerifyTheMappings();
         }
     }

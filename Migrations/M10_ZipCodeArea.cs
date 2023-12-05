@@ -7,31 +7,31 @@ namespace Migrations
     {
         public override void Down()
         {
-            Delete.UniqueConstraint("PK_AreaZipCode")
-                .FromTable("AreaZipCode")
+            Delete.UniqueConstraint("PK_ZipCodeToArea")
+                .FromTable("ZipCodeToArea")
                 .InSchema("videostore");
 
-            Delete.ForeignKey("FK_AreaZipCode_Area")
-                .OnTable("AreaZipCode")
+            Delete.ForeignKey("FK_ZipCodeToArea_Area")
+                .OnTable("ZipCodeToArea")
                 .InSchema("videostore");
 
-            Delete.ForeignKey("FK_AreaZipCode_ZipCode")
-                .OnTable("AreaZipCode")
+            Delete.ForeignKey("FK_ZipCodeToArea_ZipCode")
+                .OnTable("ZipCodeToArea")
                 .InSchema("videostore");
 
-            Delete.Table("AreaZipCode")
+            Delete.Table("ZipCodeToArea")
                 .InSchema("videostore");
         }
 
         public override void Up()
         {
-            Create.Table("AreaZipCode")
+            Create.Table("ZipCodeToArea")
                 .InSchema("videostore")
                 .WithColumn("Area_Id").AsInt64().NotNullable()
                 .WithColumn("ZipCode_Id").AsString(255).NotNullable();
 
-            Create.ForeignKey("FK_AreaZipCode_Area")
-                .FromTable("AreaZipCode")
+            Create.ForeignKey("FK_ZipCodeToArea_Area")
+                .FromTable("ZipCodeToArea")
                 .InSchema("videostore")
                 .ForeignColumn("Area_Id")
                 .ToTable("Area")
@@ -40,8 +40,8 @@ namespace Migrations
                 .OnDelete(System.Data.Rule.Cascade)
                 .OnUpdate(System.Data.Rule.Cascade);
 
-            Create.ForeignKey("FK_AreaZipCode_ZipCode")
-                .FromTable("AreaZipCode")
+            Create.ForeignKey("FK_ZipCodeToArea_ZipCode")
+                .FromTable("ZipCodeToArea")
                 .InSchema("videostore")
                 .ForeignColumn("ZipCode_Id")
                 .ToTable("ZipCode")
@@ -50,8 +50,8 @@ namespace Migrations
                 .OnDelete(System.Data.Rule.Cascade)
                 .OnUpdate(System.Data.Rule.Cascade);
 
-            Create.UniqueConstraint("PK_AreaZipCode")
-                .OnTable("AreaZipCode")
+            Create.UniqueConstraint("PK_ZipCodeToArea")
+                .OnTable("ZipCodeToArea")
                 .WithSchema("videostore")
                 .Columns("Area_Id", "ZipCode_Id");
         }
