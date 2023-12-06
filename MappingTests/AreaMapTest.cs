@@ -21,6 +21,8 @@ namespace MappingTests
             _session = _factory.GetCurrentSession();
             _session.CreateSQLQuery("delete from videostore.ZipCode")
                 .ExecuteUpdate();
+            _session.CreateSQLQuery("delete from videostore.ZipCodeToArea")
+                .ExecuteUpdate();
         }
 
         [Test]
