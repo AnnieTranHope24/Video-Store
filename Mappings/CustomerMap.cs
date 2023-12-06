@@ -23,7 +23,6 @@ namespace Mappings
 
             References(x => x.ZipCode);
             HasManyToMany<Store>(x => x.PreferredStores)
-                .Inverse()
                 .Cascade.All()
                 .AsList(index => index.Column("StoreOrder")); 
         }
